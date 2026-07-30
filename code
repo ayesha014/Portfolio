@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayesha Shahid — Aspiring Software Engineer</title>
+<meta name="description" content="Portfolio of Ayesha Shahid, aspiring software engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Kalam:wght@400;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  
+  :root{
+    --paper:      #FBF4E4;   
+    --paper-alt:  #F4E8CC;   
+    --ink:        #241E17;   
+    --coral:      #FF5A3C;   
+    --teal:       #1E8F87;   
+    --mustard:    #FFC245;   
+    --grape:      #8C63E0;   
+    --cream-line: rgba(36,30,23,0.14);
+
+    --card:        #FFFDF6;            
+    --text-soft:   #4A4238;            
+    --text-body:   #40382D;            
+    --text-meta:   #6B6153;            
+    --nav-bg:      rgba(251,244,228,0.85);
+    --grain-dot:   rgba(36,30,23,0.09);
+    --stripe:      rgba(36,30,23,0.08);
+    --placeholder: rgba(36,30,23,0.35);
+    --shadow-1:    rgba(36,30,23,0.12); 
+    --shadow-2:    rgba(36,30,23,0.20); 
+    --shadow-tape: rgba(36,30,23,0.15);
+
+    --display: 'Anton', sans-serif;
+    --hand:    'Kalam', cursive;
+    --body:    'Inter', sans-serif;
+    --mono:    'IBM Plex Mono', monospace;
+
+    --max: 1140px;
+    --edge: clamp(20px, 5vw, 64px);
+  }
+
+  
+  html[data-theme="dark"]{
+    --paper:      #1B1712;
+    --paper-alt:  #241E17;
+    --ink:        #F3ECDD;
+    --coral:      #FF7A5C;
+    --teal:       #3FC9C0;
+    --mustard:    #FFD166;
+    --grape:      #B08BFF;
+    --cream-line: rgba(243,236,221,0.14);
+
+    --card:        #2A241C;
+    --text-soft:   #C9BFAE;
+    --text-body:   #C2B8A6;
+    --text-meta:   #9C8F79;
+    --nav-bg:      rgba(20,17,13,0.85);
+    --grain-dot:   rgba(243,236,221,0.055);
+    --stripe:      rgba(243,236,221,0.06);
+    --placeholder: rgba(243,236,221,0.3);
+    --shadow-1:    rgba(0,0,0,0.35);
+    --shadow-2:    rgba(0,0,0,0.5);
+    --shadow-tape: rgba(0,0,0,0.4);
+  }
+
+  html{ transition: none; }
+  body{ transition: background-color 0.3s ease, color 0.3s ease; }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,h2,h3{ margin:0; }
+  p{ margin:0; }
+  a{ color: inherit; text-decoration: none; }
+  .hand{ font-family: var(--hand); }
+  .mono{ font-family: var(--mono); }
+  ul{ list-style:none; margin:0; padding:0; }
+
+  ::selection{ background: var(--mustard); color: var(--ink); }
+  :focus-visible{ outline: 3px solid var(--teal); outline-offset: 3px; }
+
+  
+  .grain{
+    position: fixed; inset:0; z-index:0; pointer-events:none;
+    background-image: radial-gradient(var(--grain-dot) 1.2px, transparent 1.2px);
+    background-size: 16px 16px;
+    opacity: 0.55;
+  }
+  section, header, footer, nav{ position: relative; z-index: 1; }
+  .wrap{ max-width: var(--max); margin:0 auto; padding: 0 var(--edge); }
+
+  
+
+  
+  .torn{
+    border-radius: 255px 12px 225px 12px / 12px 225px 12px 255px;
+  }
+
+  
+  .tape{
+    position:absolute;
+    width: 84px; height: 26px;
+    opacity: 0.8;
+    box-shadow: 0 1px 2px var(--shadow-tape);
+  }
+  .tape::after{
+    content:'';
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.35) 0 3px, transparent 3px 7px);
+  }
+  .tape-coral{ background: var(--coral); }
+  .tape-teal{ background: var(--teal); }
+  .tape-mustard{ background: var(--mustard); }
+  .tape-grape{ background: var(--grape); }
+
+  
+  .btn-stamp, .btn-outline-stamp{
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    padding: 14px 26px;
+    display: inline-flex;
+    align-items:center;
+    gap: 8px;
+    border: 2.5px solid var(--ink);
+    border-radius: 6px;
+    transition: transform 0.15s ease, background 0.15s ease, color .15s ease;
+    cursor: pointer;
+    transform: rotate(-1deg);
+  }
+  .btn-stamp{ background: var(--coral); color: var(--paper); font-weight: 700; }
+  .btn-stamp:hover{ transform: rotate(0deg) translateY(-3px); }
+  .btn-outline-stamp{ background: transparent; }
+  .btn-outline-stamp:hover{ background: var(--mustard); transform: rotate(1deg) translateY(-3px); }
+
+  .doodle-underline{ display:block; margin-top: 6px; }
+
+  .section-label{
+    display:inline-block;
+    font-family: var(--hand);
+    font-size: 22px;
+    color: var(--coral);
+    transform: rotate(-2deg);
+    margin-bottom: 10px;
+  }
+
+  .reveal{
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.is-visible{ opacity: 1; transform: translateY(0); }
+
+  
+  .nav{
+    position: fixed; top:0; left:0; right:0; z-index: 50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 16px var(--edge);
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    border-bottom: 2.5px dashed var(--ink);
+  }
+  .logo{ font-family: var(--display); font-size: 22px; letter-spacing: 0.02em; }
+  .logo-dot{ color: var(--coral); }
+  .nav-links{ display:flex; gap: 30px; font-family: var(--hand); font-size: 18px; }
+  .nav-links a{ position:relative; }
+  .nav-links a:hover{ color: var(--teal); }
+  .nav-right{ display:flex; align-items:center; gap: 14px; }
+  .theme-toggle{ font-size: 12px; padding: 10px 16px; white-space: nowrap; }
+  @media (max-width: 780px){
+    .nav-links{ display:none; }
+    .theme-toggle{ font-size: 0; padding: 10px; width: 40px; height: 40px; justify-content:center; }
+    .theme-toggle::before{ content: attr(data-icon); font-size: 16px; }
+  }
+
+  
+  .hero{
+    min-height: 100svh;
+    display:flex; align-items:center;
+    padding: 130px var(--edge) 70px;
+  }
+  .hero-inner{
+    max-width: var(--max); margin:0 auto; width:100%;
+    display:grid; grid-template-columns: 1.3fr 0.7fr; gap: 40px; align-items:center;
+  }
+  .eyebrow{ font-family: var(--hand); font-size: 20px; color: var(--teal); margin-bottom: 6px; transform: rotate(-1deg); display:inline-block; }
+  .hero h1{
+    font-family: var(--display);
+    font-size: clamp(46px, 8vw, 96px);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+  }
+  .role-line{ margin-top: 18px; font-family: var(--hand); font-size: clamp(20px, 2.6vw, 28px); color: var(--ink); }
+  .role-line span{ color: var(--coral); font-weight: 700; }
+  .cursor{ display:inline-block; animation: blink 1s step-end infinite; color: var(--teal); }
+  @keyframes blink{ 50%{ opacity: 0; } }
+
+  .hero-desc{ margin-top: 20px; max-width: 520px; font-size: 17px; color: var(--text-soft); }
+  .hero-actions{ margin-top: 34px; display:flex; gap: 16px; flex-wrap: wrap; }
+  .status{
+    margin-top: 40px; display:flex; align-items:center; gap: 10px;
+    font-family: var(--mono); font-size: 12.5px; color: var(--text-soft);
+  }
+  .status-dot{ width: 9px; height: 9px; border-radius: 50%; background: var(--teal);
+    box-shadow: 0 0 0 0 rgba(30,143,135,0.6); animation: pulse 2s infinite; }
+  @keyframes pulse{
+    0%{ box-shadow: 0 0 0 0 rgba(30,143,135,0.5); }
+    70%{ box-shadow: 0 0 0 8px rgba(30,143,135,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(30,143,135,0); }
+  }
+
+  
+  .polaroid{
+    position: relative;
+    background: var(--card);
+    padding: 14px 14px 46px;
+    box-shadow: 0 10px 24px var(--shadow-2);
+    transform: rotate(6deg);
+  }
+  .polaroid-photo{
+    aspect-ratio: 4/5;
+    background:
+      repeating-linear-gradient(135deg, var(--stripe) 0 2px, transparent 2px 14px),
+      var(--paper-alt);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--placeholder);
+    font-family: var(--display);
+    font-size: 54px;
+  }
+  .polaroid-caption{
+    position:absolute; bottom: 10px; left: 0; right:0; text-align:center;
+    font-family: var(--hand); font-size: 16px; color: var(--ink);
+  }
+  .polaroid .tape{ top: -14px; left: 50%; transform: translateX(-50%) rotate(-4deg); }
+
+  
+  .polaroid-photo svg{ width: 74%; height: 74%; overflow: visible; }
+  .illo-ink{ stroke: var(--ink); }
+  .illo-fill-ink{ fill: var(--ink); }
+
+  
+  .illo-line{ transform-origin: left center; animation: typeGrow 3.2s ease-in-out infinite; }
+  .illo-line:nth-child(1){ animation-delay: 0s; }
+  .illo-line:nth-child(2){ animation-delay: 0.5s; }
+  .illo-line:nth-child(3){ animation-delay: 1s; }
+  @keyframes typeGrow{
+    0%, 8%{ transform: scaleX(0); }
+    38%, 62%{ transform: scaleX(1); }
+    92%,100%{ transform: scaleX(0); }
+  }
+  .illo-cursor{ animation: blink 0.9s step-end infinite; }
+  .illo-steam{ animation: steamRise 2.8s ease-in infinite; opacity: 0; }
+  .illo-steam:nth-child(1){ animation-delay: 0s; }
+  .illo-steam:nth-child(2){ animation-delay: 0.9s; }
+  .illo-steam:nth-child(3){ animation-delay: 1.8s; }
+  @keyframes steamRise{
+    0%{ transform: translateY(0) scale(1); opacity: 0; }
+    20%{ opacity: 0.8; }
+    100%{ transform: translateY(-16px) scale(1.25); opacity: 0; }
+  }
+
+  
+  .illo-gear{ transform-origin: center; animation: gearSpin 6s linear infinite; }
+  @keyframes gearSpin{ to{ transform: rotate(360deg); } }
+  .illo-bulb-glow{ animation: bulbPulse 2.4s ease-in-out infinite; transform-origin: center; }
+  @keyframes bulbPulse{
+    0%,100%{ opacity: 0.25; transform: scale(0.9); }
+    50%{ opacity: 0.9; transform: scale(1.15); }
+  }
+
+  
+  .illo-scan{ animation: scanMove 2.6s ease-in-out infinite alternate; }
+  @keyframes scanMove{
+    0%{ transform: translateY(-14px); }
+    100%{ transform: translateY(14px); }
+  }
+  .illo-plate-box{ animation: plateBlink 1.8s ease-in-out infinite; transform-origin: center; }
+  @keyframes plateBlink{
+    0%,100%{ opacity: 0.35; }
+    50%{ opacity: 1; }
+  }
+
+  
+  .illo-heart{ animation: heartbeatPulse 1.6s ease-in-out infinite; transform-origin: center; }
+  @keyframes heartbeatPulse{
+    0%,100%{ transform: scale(1); }
+    18%{ transform: scale(1.18); }
+    32%{ transform: scale(1); }
+  }
+  .illo-ekg{ stroke-dasharray: 10 6; animation: ekgMove 1.4s linear infinite; }
+  @keyframes ekgMove{ to{ stroke-dashoffset: -160; } }
+
+  
+  .illo-dot{ animation: dotTravel 2.4s ease-in-out infinite; opacity: 0; }
+  .illo-dot:nth-child(1){ animation-delay: 0s; }
+  .illo-dot:nth-child(2){ animation-delay: 0.6s; }
+  .illo-dot:nth-child(3){ animation-delay: 1.2s; }
+  @keyframes dotTravel{
+    0%{ transform: translateX(0); opacity: 0; }
+    15%{ opacity: 1; }
+    85%{ opacity: 1; }
+    100%{ transform: translateX(46px); opacity: 0; }
+  }
+  .illo-tail{ animation: tailWag 1.2s ease-in-out infinite; transform-origin: 20% 50%; }
+  @keyframes tailWag{
+    0%,100%{ transform: rotate(-8deg); }
+    50%{ transform: rotate(10deg); }
+  }
+
+  .scroll-cue{ position:absolute; bottom: 26px; left: var(--edge); font-family: var(--hand); font-size: 16px; color: var(--ink); }
+
+  @media (max-width: 860px){
+    .hero-inner{ grid-template-columns: 1fr; }
+    .polaroid{ max-width: 220px; margin: 0 auto; transform: rotate(3deg); }
+  }
+
+  
+  .about{ padding: 110px 0; }
+  .about-grid{ display:grid; grid-template-columns: 320px 1fr; gap: 56px; align-items:start; }
+  .about .polaroid{ transform: rotate(-5deg); }
+  .about .polaroid .tape{ background: var(--mustard); }
+  .about .polaroid .tape::after{ background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.35) 0 3px, transparent 3px 7px); }
+
+  .about-copy h2{
+    font-family: var(--display);
+    font-size: clamp(28px, 3.8vw, 42px);
+    max-width: 14ch;
+    margin-bottom: 20px;
+    line-height: 1.05;
+  }
+  .about-copy p{ margin-bottom: 16px; color: var(--text-body); max-width: 62ch; }
+  .about-meta{ margin-top: 30px; display:flex; flex-wrap:wrap; gap: 14px; }
+  .meta-tag{
+    font-family: var(--hand); font-size: 16px;
+    background: var(--paper-alt);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    padding: 8px 18px;
+    transform: rotate(-1.5deg);
+  }
+  .meta-tag:nth-child(2n){ transform: rotate(1.5deg); }
+  .meta-tag b{ color: var(--coral); }
+
+  @media (max-width: 780px){
+    .about-grid{ grid-template-columns: 1fr; }
+    .about .polaroid{ max-width: 220px; margin: 0 auto; }
+  }
+
+  
+  .skills{ padding: 110px 0; background: var(--paper-alt); }
+  .skills h2{ font-family: var(--display); font-size: clamp(30px, 4vw, 46px); margin-bottom: 50px; max-width: 16ch; }
+  .spec-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 34px 28px; }
+  .spec-card{
+    position:relative;
+    background: var(--card);
+    padding: 30px 26px 26px;
+    box-shadow: 0 8px 18px var(--shadow-1);
+  }
+  .spec-card:nth-child(1){ transform: rotate(-1.4deg); }
+  .spec-card:nth-child(2){ transform: rotate(1.2deg); }
+  .spec-card:nth-child(3){ transform: rotate(1deg); }
+  .spec-card:nth-child(4){ transform: rotate(-1deg); }
+  .spec-card .tape{ top: -14px; left: 24px; }
+  .spec-card h3{
+    font-family: var(--hand); font-weight: 700; font-size: 24px;
+    margin-bottom: 16px; color: var(--ink);
+  }
+  .chip-row{ display:flex; flex-wrap:wrap; gap: 10px; }
+  .chip{
+    font-family: var(--mono); font-size: 12.5px;
+    padding: 7px 12px;
+    border: 1.5px dashed var(--ink);
+    border-radius: 4px;
+    color: var(--text-body);
+    background: var(--paper);
+  }
+  @media (max-width: 780px){
+    .spec-grid{ grid-template-columns: 1fr; }
+    .spec-card{ transform: none !important; }
+  }
+
+  
+  .education{ padding: 110px 0; }
+  .education h2{ font-family: var(--display); font-size: clamp(30px, 4vw, 46px); margin-bottom: 50px; max-width: 16ch; }
+  .edu-grid{ display:grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .edu-card{
+    position:relative;
+    background: var(--card);
+    padding: 28px 26px 24px;
+    box-shadow: 0 8px 18px var(--shadow-1);
+  }
+  .edu-card:nth-child(1){ transform: rotate(-1.2deg); }
+  .edu-card:nth-child(2){ transform: rotate(1deg); }
+  .edu-card .tape{ top: -14px; left: 24px; }
+  .edu-card .edu-degree{ font-family: var(--display); font-size: 19px; margin-bottom: 6px; }
+  .edu-card .edu-school{ font-family: var(--hand); font-size: 17px; color: var(--teal); margin-bottom: 4px; }
+  .edu-card .edu-dates{ font-family: var(--mono); font-size: 12px; color: var(--text-meta); margin-bottom: 12px; }
+  .edu-card .edu-grade{ display:inline-block; font-family: var(--mono); font-size: 12px; border: 1.5px dashed var(--ink); border-radius: 4px; padding: 5px 10px; }
+  @media (max-width: 780px){
+    .edu-grid{ grid-template-columns: 1fr; }
+    .edu-card{ transform: none !important; }
+  }
+
+  
+  .experience{ padding: 110px 0; background: var(--paper-alt); }
+  .experience h2{ font-family: var(--display); font-size: clamp(30px, 4vw, 46px); margin-bottom: 50px; max-width: 18ch; }
+  .timeline{ display:flex; flex-direction:column; gap: 26px; }
+  .exp-card{
+    position:relative;
+    background: var(--card);
+    padding: 26px 28px;
+    box-shadow: 0 8px 18px var(--shadow-1);
+  }
+  .exp-card:nth-child(odd){ transform: rotate(-0.7deg); }
+  .exp-card:nth-child(even){ transform: rotate(0.6deg); }
+  .exp-card .tape{ top: -14px; left: 32px; }
+  .exp-head{ display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap: 10px; margin-bottom: 14px; }
+  .exp-role{ font-family: var(--display); font-size: 19px; }
+  .exp-org{ font-family: var(--hand); font-size: 17px; color: var(--coral); }
+  .exp-dates{ font-family: var(--mono); font-size: 12px; color: var(--text-meta); }
+  .exp-card ul{ display:flex; flex-direction:column; gap: 8px; }
+  .exp-card li{ font-size: 14.5px; color: var(--text-body); padding-left: 18px; position:relative; }
+  .exp-card li::before{ content:'✦'; position:absolute; left:0; color: var(--teal); font-size: 11px; top: 4px; }
+  @media (max-width: 780px){ .exp-card{ transform: none !important; } }
+
+  
+  .projects{ padding: 110px 0; }
+  .projects h2{ font-family: var(--display); font-size: clamp(30px, 4vw, 46px); margin-bottom: 54px; max-width: 16ch; }
+  .project-card{
+    position: relative;
+    display:grid; grid-template-columns: 300px 1fr; gap: 36px;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .project-card:nth-child(even){ grid-template-columns: 1fr 300px; }
+  .project-card:nth-child(even) .project-media{ order: 2; }
+  .project-media .polaroid{ transform: rotate(-4deg); }
+  .project-card:nth-child(2n) .project-media .polaroid{ transform: rotate(4deg); }
+  .project-media .polaroid .tape{ background: var(--grape); }
+  .project-thumb{
+    font-family: var(--display); font-size: 13px; letter-spacing: 0.06em;
+  }
+  .project-meta{ display:flex; gap: 14px; flex-wrap:wrap; font-family: var(--mono); font-size: 11.5px; color: var(--teal); margin-bottom: 14px; }
+  .project-meta span{ background: var(--paper-alt); padding: 4px 10px; border-radius: 4px; }
+  .project-body h3{ font-family: var(--display); font-size: 26px; margin-bottom: 12px; }
+  .project-body p{ color: var(--text-body); margin-bottom: 20px; max-width: 52ch; }
+  .project-links{ display:flex; gap: 22px; }
+  .project-links a{
+    font-family: var(--hand); font-size: 17px; color: var(--coral);
+    border-bottom: 2px dashed var(--coral);
+  }
+  .project-links a:hover{ color: var(--teal); border-color: var(--teal); }
+
+  @media (max-width: 780px){
+    .project-card, .project-card:nth-child(even){ grid-template-columns: 1fr; }
+    .project-card:nth-child(even) .project-media{ order: 0; }
+    .project-media .polaroid{ max-width: 220px; margin: 0 auto; }
+  }
+
+  
+  .contact{ padding: 110px 0 90px; background: var(--paper-alt); }
+  .contact-inner{ text-align:center; max-width: 720px; margin: 0 auto; }
+  .contact h2{ font-family: var(--display); font-size: clamp(30px, 4.4vw, 50px); margin-bottom: 44px; }
+  .postcard{
+    position:relative;
+    background: var(--card);
+    border: 2.5px solid var(--ink);
+    border-radius: 10px;
+    padding: 34px 30px;
+    text-align:left;
+    box-shadow: 0 10px 24px var(--shadow-tape);
+    transform: rotate(-1deg);
+    margin-bottom: 40px;
+  }
+  .postcard .tape{ top: -14px; right: 40px; }
+  .postcard-row{ display:flex; justify-content:space-between; align-items:center; padding: 10px 0; border-bottom: 1.5px dashed var(--cream-line); font-family: var(--mono); font-size: 14px; }
+  .postcard-row:last-child{ border-bottom:none; }
+  .postcard-row a:hover{ color: var(--teal); }
+  .stamp{
+    position:absolute; top: 18px; right: 18px;
+    width: 58px; height: 58px;
+    border: 2.5px dashed var(--coral);
+    border-radius: 6px;
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--hand); color: var(--coral); font-size: 12px; text-align:center; line-height:1.2;
+    transform: rotate(6deg);
+  }
+  .btn-stamp.big{ font-size: 16px; padding: 18px 36px; }
+
+  
+  footer{
+    padding: 30px var(--edge) 40px; text-align:center;
+    font-family: var(--hand); font-size: 15px; color: var(--text-soft);
+    border-top: 2.5px dashed var(--ink);
+  }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a href="#top" class="logo">AS<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button id="themeToggle" class="btn-outline-stamp theme-toggle" type="button" aria-label="Toggle dark mode" data-icon="🌙">🌙 dark mode</button>
+    <a class="btn-outline-stamp" href="#contact">Let's talk</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow hand">hey, I'm —</p>
+      <h1>Ayesha<br>Shahid</h1>
+      <svg class="doodle-underline" width="260" height="18" viewBox="0 0 260 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3 12C40 2 80 2 100 10C120 18 160 2 180 8C200 14 230 4 257 10" stroke="#FF5A3C" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <p class="role-line hand">an aspiring software engineer who loves <span>building intelligent systems</span><span class="cursor">_</span></p>
+      <p class="hero-desc">Software Engineering student with hands-on experience in Python, C++, and SQL. Passionate about building intelligent systems and user-friendly software — currently looking for an entry-level software development or data internship.</p>
+      <div class="hero-actions">
+        <a class="btn-stamp" href="#projects">view my work</a>
+        <a class="btn-outline-stamp" href="#contact">say hi</a>
+      </div>
+      <div class="status"><span class="status-dot" aria-hidden="true"></span> open to internships & entry-level roles</div>
+    </div>
+    <div class="polaroid">
+      <span class="tape tape-teal" aria-hidden="true"></span>
+      <div class="polaroid-photo" aria-hidden="true">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          
+          <path class="illo-ink" d="M55 150 L145 150 L155 165 L45 165 Z" fill="var(--paper-alt)" stroke-width="3"/>
+          <rect class="illo-ink" x="62" y="90" width="76" height="60" rx="4" fill="var(--ink)" stroke-width="3"/>
+          <rect x="68" y="97" width="64" height="46" rx="2" fill="var(--card)"/>
+          <rect class="illo-line" x="74" y="105" width="40" height="5" rx="2" fill="var(--teal)"/>
+          <rect class="illo-line" x="74" y="116" width="52" height="5" rx="2" fill="var(--coral)"/>
+          <rect class="illo-line" x="74" y="127" width="30" height="5" rx="2" fill="var(--mustard)"/>
+          <rect class="illo-cursor" x="107" y="127" width="6" height="5" fill="var(--ink)"/>
+          
+          <path class="illo-ink" d="M148 118 h22 v20 a11 11 0 0 1 -11 11 h0 a11 11 0 0 1 -11 -11 Z" fill="var(--coral)" stroke-width="3"/>
+          <path class="illo-ink" d="M170 122 q10 0 10 9 t-10 9" fill="none" stroke-width="3"/>
+          <path class="illo-steam" d="M153 112 q-4 -6 0 -12" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>
+          <path class="illo-steam" d="M160 112 q4 -6 0 -12" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>
+          <path class="illo-steam" d="M166 112 q-3 -6 0 -12" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>
+          
+          <path class="illo-ink" d="M32 150 h16 l-3 -14 h-10 Z" fill="var(--grape)" stroke-width="3"/>
+          <path d="M40 136 q-8 -6 -12 -16 M40 136 q8 -8 10 -18 M40 136 q0 -10 0 -20" stroke="var(--teal)" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="polaroid-caption">fueled by coffee ☕</p>
+    </div>
+  </div>
+  <p class="scroll-cue hand" aria-hidden="true">keep scrolling ↓</p>
+</header>
+
+<section class="about reveal" id="about">
+  <div class="wrap">
+    <p class="section-label hand">01 — about me</p>
+    <div class="about-grid">
+      <div class="polaroid">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="polaroid-photo" aria-hidden="true">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            
+            <path class="illo-ink" d="M40 145 Q70 130 100 145 L100 100 Q70 85 40 100 Z" fill="var(--card)" stroke-width="3"/>
+            <path class="illo-ink" d="M160 145 Q130 130 100 145 L100 100 Q130 85 160 100 Z" fill="var(--card)" stroke-width="3"/>
+            <path d="M52 105 Q72 96 88 105 M52 116 Q72 107 88 116 M52 127 Q72 118 88 127" stroke="var(--teal)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <path d="M148 105 Q128 96 112 105 M148 116 Q128 107 112 116 M148 127 Q128 118 112 127" stroke="var(--coral)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            
+            <g class="illo-gear" transform="translate(148,60)">
+              <circle r="14" fill="var(--mustard)" stroke="var(--ink)" stroke-width="3"/>
+              <circle r="5" fill="var(--card)" stroke="var(--ink)" stroke-width="2"/>
+              <rect x="-2.5" y="-21" width="5" height="8" fill="var(--ink)"/>
+              <rect x="-2.5" y="13" width="5" height="8" fill="var(--ink)"/>
+              <rect x="-21" y="-2.5" width="8" height="5" fill="var(--ink)"/>
+              <rect x="13" y="-2.5" width="8" height="5" fill="var(--ink)"/>
+            </g>
+            
+            <g transform="translate(48,55)">
+              <circle class="illo-bulb-glow" r="16" fill="var(--mustard)"/>
+              <circle r="11" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/>
+              <path d="M-4 8 h8 M-3 12 h6" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M-4 -2 q4 -6 8 0" stroke="var(--ink)" stroke-width="2" fill="none"/>
+            </g>
+          </svg>
+        </div>
+        <p class="polaroid-caption">always learning</p>
+      </div>
+      <div class="about-copy">
+        <h2>Turning data and ideas into working software.</h2>
+        <p>I'm an enthusiastic Software Engineering student with hands-on experience in Python, C++, and SQL. I like taking a messy dataset or a vague problem and turning it into something intelligent and genuinely usable — whether that's a computer vision tool, a prediction model, or a well-designed database.</p>
+        <p>I'm currently looking for an entry-level software development or data internship where I can keep learning while contributing to real projects.</p>
+        <div class="about-meta">
+          <span class="meta-tag">📍 <b>based in</b> Lahore, Pakistan</span>
+          <span class="meta-tag">🎯 <b>focus</b> software development & data</span>
+          <span class="meta-tag">🎓 <b>studying</b> Software Engineering, BSc</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills reveal" id="skills">
+  <div class="wrap">
+    <p class="section-label hand">02 — my toolkit</p>
+    <h2>Skills &amp; tools</h2>
+    <div class="spec-grid">
+      <div class="spec-card">
+        <span class="tape tape-coral" aria-hidden="true"></span>
+        <h3>programming</h3>
+        <div class="chip-row">
+          <span class="chip">Python</span><span class="chip">C++</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div class="spec-card">
+        <span class="tape tape-mustard" aria-hidden="true"></span>
+        <h3>tools</h3>
+        <div class="chip-row">
+          <span class="chip">Tableau</span><span class="chip">Excel</span><span class="chip">OpenCV</span><span class="chip">Tkinter</span>
+        </div>
+      </div>
+      <div class="spec-card">
+        <span class="tape tape-teal" aria-hidden="true"></span>
+        <h3>databases</h3>
+        <div class="chip-row">
+          <span class="chip">MySQL</span>
+        </div>
+      </div>
+      <div class="spec-card">
+        <span class="tape tape-grape" aria-hidden="true"></span>
+        <h3>concepts</h3>
+        <div class="chip-row">
+          <span class="chip">OOP</span><span class="chip">Data Visualization</span><span class="chip">GUI Design</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="education reveal" id="education">
+  <div class="wrap">
+    <p class="section-label hand">03 — education</p>
+    <h2>Where I've been learning</h2>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <span class="tape tape-coral" aria-hidden="true"></span>
+        <p class="edu-degree">Bachelor of Science in Software Engineering</p>
+        <p class="edu-school">Government College University, Lahore</p>
+        <p class="edu-dates">2023 – 2027</p>
+        <span class="edu-grade">GPA: 3.38</span>
+      </div>
+      <div class="edu-card">
+        <span class="tape tape-teal" aria-hidden="true"></span>
+        <p class="edu-degree">ICS with Computer Science</p>
+        <p class="edu-school">Punjab Group of Colleges</p>
+        <p class="edu-dates">2021 – 2023</p>
+        <span class="edu-grade">Grade: A+</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience reveal" id="experience">
+  <div class="wrap">
+    <p class="section-label hand">04 — experience</p>
+    <h2>What I've worked on so far</h2>
+    <div class="timeline">
+      <div class="exp-card">
+        <span class="tape tape-mustard" aria-hidden="true"></span>
+        <div class="exp-head">
+          <div><span class="exp-role">Data Visualization Intern</span> — <span class="exp-org">Excelerate</span></div>
+          <span class="exp-dates">July 2025 – August 2025</span>
+        </div>
+        <ul>
+          <li>Developed interactive data visualizations and dashboards using Tableau and Excel to support data-driven decision-making.</li>
+          <li>Cleaned, organized, and pre-processed raw datasets to improve data accuracy and reporting consistency.</li>
+          <li>Collaborated with cross-functional teams to understand project requirements and deliver visually effective analytical reports.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <span class="tape tape-grape" aria-hidden="true"></span>
+        <div class="exp-head">
+          <div><span class="exp-role">Relationship Manager Intern</span> — <span class="exp-org">United Bank Limited</span></div>
+          <span class="exp-dates">August 2025 – September 2025</span>
+        </div>
+        <ul>
+          <li>Assisted relationship managers in handling client portfolios and resolving customer inquiries efficiently.</li>
+          <li>Conducted preliminary financial assessments and verified documentation for banking and investment services.</li>
+          <li>Developed communication and client-management skills through direct interaction with banking customers and internal teams.</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <span class="tape tape-teal" aria-hidden="true"></span>
+        <div class="exp-head">
+          <div><span class="exp-role">Project Management Intern</span> — <span class="exp-org">Excelerate</span></div>
+          <span class="exp-dates">September 2025 – October 2025</span>
+        </div>
+        <ul>
+          <li>Assisted in planning, scheduling, and coordinating project activities to ensure timely completion of deliverables.</li>
+          <li>Tracked project progress, maintained documentation, and prepared status reports for stakeholders and team members.</li>
+          <li>Collaborated with cross-functional teams to gather requirements, monitor task execution, and support effective project communication.</li>
+          <li>Participated in meetings, recorded action items, and helped identify and resolve project-related issues and risks.</li>
+          <li>Utilized project management tools to organize tasks, manage timelines, and improve workflow efficiency.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects reveal" id="projects">
+  <div class="wrap">
+    <p class="section-label hand">05 — things I've built</p>
+    <h2>Selected projects</h2>
+
+    <article class="project-card">
+      <div class="project-media">
+        <div class="polaroid">
+          <span class="tape" aria-hidden="true"></span>
+          <div class="polaroid-photo project-thumb" aria-hidden="true">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              
+              <g transform="translate(100,50)">
+                <rect x="-22" y="-14" width="44" height="28" rx="6" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/>
+                <circle r="9" fill="var(--teal)" stroke="var(--ink)" stroke-width="3"/>
+                <rect class="illo-scan" x="-18" y="-1" width="36" height="2.5" fill="var(--coral)"/>
+              </g>
+              <path d="M100 64 v18" stroke="var(--ink)" stroke-width="3"/>
+              
+              <path class="illo-ink" d="M38 140 q4 -30 30 -32 h64 q26 2 30 32 Z" fill="var(--mustard)" stroke-width="3"/>
+              <path class="illo-ink" d="M78 108 q10 -14 24 -14 t24 14 Z" fill="var(--card)" stroke-width="2.5"/>
+              <circle class="illo-ink" cx="66" cy="142" r="11" fill="var(--ink)"/>
+              <circle class="illo-ink" cx="134" cy="142" r="11" fill="var(--ink)"/>
+              
+              <rect x="80" y="130" width="40" height="14" rx="2" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5"/>
+              <rect class="illo-plate-box" x="80" y="130" width="40" height="14" rx="2" fill="none" stroke="var(--coral)" stroke-width="2.5"/>
+            </svg>
+          </div>
+          <p class="polaroid-caption">Number Plate Detection</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span>Python</span><span>OpenCV</span><span>Tkinter</span><span>Machine Learning</span></div>
+        <h3>Number Plate Detection System</h3>
+        <p>Developed a real-time number plate detection system using Python and OpenCV with a Tkinter-based GUI for image and video processing. Implemented image preprocessing and detection techniques to identify and log vehicle license plates efficiently.</p>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-media">
+        <div class="polaroid">
+          <span class="tape" aria-hidden="true"></span>
+          <div class="polaroid-photo project-thumb" aria-hidden="true">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <g class="illo-heart" transform="translate(100,80)">
+                <path class="illo-ink" d="M0 22 C-28 0 -30 -28 -10 -30 C0 -31 0 -18 0 -14 C0 -18 0 -31 10 -30 C30 -28 28 0 0 22 Z" fill="var(--coral)" stroke-width="3"/>
+              </g>
+              <path class="illo-ekg illo-ink" d="M30 140 h24 l8 -22 l10 40 l10 -55 l10 55 l8 -18 h30 h30" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="polaroid-caption">Heart Disease Prediction</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span>Python</span><span>Machine Learning</span><span>Pandas</span><span>Scikit-learn</span></div>
+        <h3>Heart Disease Prediction System</h3>
+        <p>Designed and developed a machine learning-based heart disease prediction system using Python and Scikit-learn to analyze patient health data and predict potential heart disease risk. Implemented data preprocessing, feature selection, model training, and performance evaluation techniques to improve prediction accuracy.</p>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-media">
+        <div class="polaroid">
+          <span class="tape" aria-hidden="true"></span>
+          <div class="polaroid-photo project-thumb" aria-hidden="true">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              
+              <g transform="translate(50,95)">
+                <ellipse class="illo-ink" cx="0" cy="10" rx="20" ry="15" fill="var(--mustard)" stroke-width="3"/>
+                <circle class="illo-ink" cx="16" cy="-6" r="12" fill="var(--mustard)" stroke-width="3"/>
+                <path class="illo-ink" d="M8 -14 l-6 -10 l8 2 Z" fill="var(--mustard)" stroke-width="2.5"/>
+                <path class="illo-tail" d="M-18 4 q-14 -4 -16 -16" stroke="var(--ink)" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <circle cx="20" cy="-8" r="1.6" fill="var(--ink)"/>
+              </g>
+              
+              <circle class="illo-dot" cx="88" cy="100" r="4" fill="var(--teal)"/>
+              <circle class="illo-dot" cx="88" cy="100" r="4" fill="var(--teal)"/>
+              <circle class="illo-dot" cx="88" cy="100" r="4" fill="var(--teal)"/>
+              
+              <g transform="translate(150,95)">
+                <path class="illo-ink" d="M-20 -22 a20 7 0 0 1 40 0 v34 a20 7 0 0 1 -40 0 Z" fill="var(--card)" stroke-width="3"/>
+                <ellipse class="illo-ink" cx="0" cy="-22" rx="20" ry="7" fill="var(--grape)" stroke-width="3"/>
+                <path d="M-20 -10 a20 7 0 0 0 40 0 M-20 2 a20 7 0 0 0 40 0" stroke="var(--ink)" stroke-width="2" fill="none"/>
+              </g>
+            </svg>
+          </div>
+          <p class="polaroid-caption">Pet Adoption System</p>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-meta"><span>MySQL</span><span>SQL</span><span>Database Design</span></div>
+        <h3>Pet Adoption Management System</h3>
+        <p>Designed a relational database system for managing pet adoptions, including pet records, adopter information, and adoption history. Implemented efficient SQL queries and normalization techniques to maintain data integrity and improve database performance.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="contact reveal" id="contact">
+  <div class="wrap contact-inner">
+    <p class="section-label hand" style="transform: rotate(-2deg);">06 — get in touch</p>
+    <h2>Let's build something intelligent, together.</h2>
+    <div class="postcard">
+      <span class="tape tape-mustard" aria-hidden="true"></span>
+      <div class="stamp">FIRST<br>CLASS</div>
+      <div class="postcard-row"><span>email</span><a href="mailto:shahidayesha014@gmail.com">shahidayesha014@gmail.com</a></div>
+      <div class="postcard-row"><span>phone</span><a href="tel:03248579513">0324-8579513</a></div>
+      <div class="postcard-row"><span>linkedin</span><a href="https://www.linkedin.com/in/ayesha-shahid014" target="_blank" rel="noopener">linkedin.com/in/ayesha-shahid014</a></div>
+      <div class="postcard-row"><span>location</span><span>Lahore, Pakistan</span></div>
+    </div>
+    <a class="btn-stamp big" href="mailto:shahidayesha014@gmail.com">say hello →</a>
+  </div>
+</section>
+
+<footer>
+  <p>made by hand (and a little code) — © 2026 Ayesha Shahid</p>
+</footer>
+
+<script>
+  const themeToggle = document.getElementById('themeToggle');
+  const rootEl = document.documentElement;
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let currentTheme = prefersDark ? 'dark' : 'light';
+
+  function applyTheme(theme){
+    rootEl.setAttribute('data-theme', theme);
+    const label = theme === 'dark' ? '🌞 light mode' : '🌙 dark mode';
+    const icon = theme === 'dark' ? '🌞' : '🌙';
+    themeToggle.textContent = label;
+    themeToggle.setAttribute('data-icon', icon);
+  }
+  applyTheme(currentTheme);
+
+  themeToggle.addEventListener('click', () => {
+    currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+    applyTheme(currentTheme);
+  });
+
+  const phrases = ["building intelligent systems", "user-friendly software", "data-driven dashboards", "clean, readable code"];
+  const roleEl = document.querySelector('.role-line span');
+  let pi = 0;
+  setInterval(() => {
+    pi = (pi + 1) % phrases.length;
+    roleEl.style.opacity = 0;
+    setTimeout(() => {
+      roleEl.textContent = phrases[pi];
+      roleEl.style.opacity = 1;
+    }, 250);
+  }, 2600);
+  roleEl.style.transition = 'opacity 0.25s ease';
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
